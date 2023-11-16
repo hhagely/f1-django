@@ -1,0 +1,27 @@
+{% extends 'races/base.html' %}
+{% block content %}
+
+{% if not places %}
+<p>Race schedule unavailable at this time</p>
+{% endif %}
+
+<table>
+  <thead>
+    <th>Round Number</th>
+    <th>Event Name</th>
+    <th>Location</th>
+  </thead>
+  <tbody>
+    {% for country, location, event_name in places %}
+      <tr>
+        <td><a href="/races/{{event_name}}">{{ event_name }}</a></td>
+        <td>{{ location }}, {{ country }}</td>
+      </tr>
+      {% comment %} <li>{{ event_name }} - {{ location }}, {{ country }}</li> {% endcomment %}
+    {% endfor %}
+
+  </tbody>
+</table>
+{% comment %} <ul>
+</ul> {% endcomment %}
+{% endblock %}

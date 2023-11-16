@@ -1,0 +1,36 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'races/css/base.css' %}">
+    <link href="https://unpkg.com/bonsai.css@latest/dist/bonsai.min.css" rel="stylesheet">
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+</head>
+
+<body>
+    <header class="o-box c-site-header">
+        <nav class="o-max-width c-site-nav">
+            <a class="c-site-nav__link c-site-nav__wordmark" href="/">F1 Races!</a>
+            <ul class="u-no-margin u-no-padding c-site-nav__list">
+                <li class="c-site-nav__item"><a class="c-site-nav__link" href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="o-max-width o-site-main">
+
+    <!-- Content blocks let us use base.html as a template. -->
+    {% block content %}
+    {% endblock %}
+    </main>
+
+    <footer class="o-box c-site-footer">
+        {% comment %} <div class="o-max-width">
+            <p>The <a href="https://practical.learnpython.dev">Practical Python Blog</a>, built with Django!</p>
+            <p><em><small>Created for Practical Python</small></em></p>
+        </div> {% endcomment %}
+    </footer>
+
+</body>
+
+</html>
