@@ -1,8 +1,21 @@
 {% extends 'races/base.html' %}
 {% block content %}
 
-<p>
-  {{ event }}
-</p>
+<h1>{{ event_name }}</h1>
+<h3>Session List</h3>
+{% comment %} <table>
+  <tbody> {% endcomment %}
+    <ul>
+
+      {% for session in session_list %}
+      {% comment %} <tr> {% endcomment %}
+        <li><a href="{{session}}">{{ session }}</a></li>
+      {% comment %} </tr> {% endcomment %}
+      {% endfor %}
+    </ul>
+  {% comment %} </tbody>
+</table> {% endcomment %}
+
+{% include "races/load_drivers.html" %}
 
 {% endblock %}

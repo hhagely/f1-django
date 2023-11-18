@@ -1,0 +1,37 @@
+{% extends 'races/base.html' %}
+{% block content %}
+
+<h1>Race Session</h1>
+
+<table>
+  <thead>
+    <th>Driver Number</th>
+    <th>Abbr.</th>
+    <th>Position</th>
+    <th>Q1 Best Lap</th>
+    <th>Q2 Best Lap</th>
+    <th>Q3 Best Lap</th>
+  </thead>
+  <tbody>
+    {% for driver_number, abbr, position, q1 in session_info %}
+    <tr>
+      <td>{{driver_number}}</td>
+      <td>{{abbr}}</td>
+      <td>{{position}}</td>
+      <td>{{q1}}</td>
+      {% comment %} <td>{{q2}}</td> {% endcomment %}
+      {% comment %}<td>{{q3}}</td> {% endcomment %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% comment %} {% if not session_info %}
+  <p>data not ready yet</p>
+{% else %}
+<p>
+  {{ session_info }}
+</p>
+
+{% endif %} {% endcomment %}
+
+{% endblock %}
