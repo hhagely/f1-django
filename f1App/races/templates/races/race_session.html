@@ -1,26 +1,26 @@
 {% extends 'races/base.html' %}
 {% block content %}
 
-<h1>Race Session</h1>
+<h1>{{event_name}} &ndash; {{session_type}}</h1>
 
 <table>
   <thead>
     <th>Driver Number</th>
     <th>Abbr.</th>
-    <th>Position</th>
-    <th>Q1 Best Lap</th>
-    <th>Q2 Best Lap</th>
-    <th>Q3 Best Lap</th>
+    <th>Finish Result</th>
+    <th>Start Position</th>
+    <th>Status</th>
+    <th>Points Earned</th>
   </thead>
   <tbody>
-    {% for driver_number, abbr, position, q1, q2, q3 in session_info %}
+    {% for driver_number, driver_abbr, finish_result, grid_position, status, points in session_info %}
     <tr>
-      <td>{{driver_number}}</td>
-      <td>{{abbr}}</td>
-      <td>{{position}}</td>
-      <td>{{q1}}</td>
-      <td>{{q2}}</td>
-      <td>{{q3}}</td>
+      <td>{{ driver_number }}</td>
+      <td><a href="{% url "driver_laps" event_name session_type driver_abbr %}" title="View Lap Data">{{ driver_abbr }}</a></td>
+      <td>{{ finish_result }}</td>
+      <td>{{ grid_position|floatformat:"0" }}</td>
+      <td>{{ status }}</td>
+      <td>{{ points|floatformat:"0" }}</td>
     </tr>
     {% endfor %}
   </tbody>

@@ -1,0 +1,29 @@
+{% extends "races/base.html" %}
+
+{% block content %}
+
+<h1>Lap Data for {{ driver_abbr }} &ndash; {{ event_name }}</h1>
+
+<table>
+  <thead>
+    <th>Lap Number</th>
+    <th>Stint</th>
+    <th>Lap Time</th>
+    <th>Position</th>
+    <th>Lap Time Deleted?</th>
+    <th>Deleted Reason</th>
+  </thead>
+  <tbody>
+    {% for lap_number, stint, lap_time, position, deleted, deleted_reason in lap_info %}
+    <tr>
+      <td>{{ lap_number|floatformat:"0" }}</td>
+      <td>{{ stint|floatformat:"0" }}</a></td>
+      <td>{{ lap_time }}</td>
+      <td>{{ position|floatformat:"0" }}</td>
+      <td>{{ deleted|yesno }}</td>
+      <td>{{ deleted_reason }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
