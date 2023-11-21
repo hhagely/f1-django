@@ -12,9 +12,6 @@ def index(request):
     "places": places
   }
 
-  print(type(places))
-  print(places)
-
   return render(request, "races/index.html", context)
 
 def about(request):
@@ -35,9 +32,6 @@ def detail(request, event_name):
     ]
   }
 
-
-  print(event)
-
   return render(request, "races/detail.html", context=context)
 
 def race_session(request, event_name, session):
@@ -46,18 +40,14 @@ def race_session(request, event_name, session):
 
   results = sesh.results
 
-  print(results['q2'])
-
   session_data = list(zip(
     results['DriverNumber'],
     results['Abbreviation'],
     results['Position'],
-    results['Q1'],
-    # results['Q2'],
-    # results['Q3']
+    results['Q1'].fillna('Eliminated'),
+    results['Q2'].fillna('Eliminated'),
+    results['Q3'].fillna('Eliminated')
   ))
-
-  print(sesh.results)
 
   return render(request, "races/race_session.html", context={"session_info": session_data})
 
